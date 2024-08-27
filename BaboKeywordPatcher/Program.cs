@@ -24,17 +24,9 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Mutagen.Bethesda.Plugins.Records;
 
-
 namespace BaboKeywordPatcher
 {
-    /* public class BaboSettings
-    {
-        public bool ArmorPrettyDefault { get; set; }
-        public bool ArmorEroticDefault { get; set; }
-        public bool EroticDresses { get; set; }
-        public HashSet<ModKey> ModsToPatch { get; set; } = new HashSet<ModKey>();
-        public HashSet<ModKey> ModsToNotPatch { get; set; } = new HashSet<ModKey>();
-    } */
+   
 
     public class Program
     {
