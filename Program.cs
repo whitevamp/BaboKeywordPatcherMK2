@@ -113,13 +113,46 @@ namespace BaboKeywordPatcher
             SLA_AnalBeads = LoadKeyword(state, "SLA_AnalPlugBeads");
             SLA_VaginalBeads = LoadKeyword(state, "SLA_VaginalBeads");
             SLA_ArmorRubber = LoadKeyword(state, "SLA_ArmorRubber");
-            SLA_BraArmor = LoadKeyword(state, "SLA_BraArmor");
+            // Not in SexLabAroused Redux V28b SSE Modified by BakaFactory(2020 11 17)
+			//SLA_BraArmor = LoadKeyword(state, "SLA_BraArmor");
             SLA_ThongT = LoadKeyword(state, "SLA_ThongT");
             SLA_PantiesNormal = LoadKeyword(state, "SLA_PantiesNormal");
             SLA_HasLeggings = LoadKeyword(state, "SLA_HasLeggings");
             SLA_HasStockings = LoadKeyword(state, "SLA_HasStockings");
             SLA_MiniSkirt = LoadKeyword(state, "SLA_MiniSkirt");
             SLA_ArmorHalfNakedBikini = LoadKeyword(state, "SLA_ArmorHalfNakedBikini");
+			//Added Keywords. From SexLabAroused Redux V28b SSE Modified by BakaFactory(2020 11 17)
+			SLA_FullSkirt = LoadKeyword(state, "SLA_FullSkirt");
+            SLA_ArmorCurtain = LoadKeyword(state, "SLA_ArmorCurtain");
+            SLA_ArmorPartBottom = LoadKeyword(state, "SLA_ArmorPartBottom");
+            SLA_HasSleeves = LoadKeyword(state, "SLA_HasSleeves");
+            SLA_MicroSkirt = LoadKeyword(state, "SLA_MicroSkirt");
+            SLA_Brabikini = LoadKeyword(state, "SLA_Brabikini");
+            SLA_ArmorHalfNaked = LoadKeyword(state, "SLA_ArmorHalfNaked");
+            SLA_ArmorFemaleOnly = LoadKeyword(state, "SLA_ArmorFemaleOnly");
+            SLA_ArmorSpendex = LoadKeyword(state, "SLA_ArmorSpendex");
+            SLA_PiercingBelly = LoadKeyword(state, "SLA_PiercingBelly");
+            SLA_PiercingVulva = LoadKeyword(state, "SLA_PiercingVulva");
+            SLA_ThongGstring = LoadKeyword(state, "SLA_ThongGstring");
+            SLA_MicroHotpants = LoadKeyword(state, "SLA_MicroHotpants");
+            SLA_PantsNormal = LoadKeyword(state, "SLA_PantsNormal");
+            SLA_ArmorIllegal = LoadKeyword(state, "SLA_ArmorIllegal");
+            SLA_KillerHeels = LoadKeyword(state, "SLA_KillerHeels");
+            SLA_ThongCString = LoadKeyword(state, "SLA_ThongCString");
+            SLA_ThongLowleg = LoadKeyword(state, "SLA_ThongLowleg");
+            SLA_ArmorHarness = LoadKeyword(state, "SLA_ArmorHarness");
+            SLA_Earrings = LoadKeyword(state, "SLA_Earrings");
+            SLA_PiercingNose = LoadKeyword(state, "SLA_PiercingNose");
+            SLA_PiercingLips = LoadKeyword(state, "SLA_PiercingLips");
+            SLA_ShowgirlSkirt = LoadKeyword(state, "SLA_ShowgirlSkirt");
+            SLA_PelvicCurtain = LoadKeyword(state, "SLA_PelvicCurtain");
+            SLA_ArmorPartTop = LoadKeyword(state, "SLA_ArmorPartTop");
+            SLA_ArmorLewdLeotard = LoadKeyword(state, "SLA_ArmorLewdLeotard");
+            SLA_ImpossibleClothes = LoadKeyword(state, "SLA_ImpossibleClothes");
+            SLA_ArmorCapeMini = LoadKeyword(state, "SLA_ArmorCapeMini");
+            SLA_ArmorCapeFull = LoadKeyword(state, "SLA_ArmorCapeFull");
+            SLA_PastiesNipple = LoadKeyword(state, "SLA_PastiesNipple");
+            SLA_PastiesCrotch = LoadKeyword(state, "SLA_PastiesCrotch");
         }
 
         private static void AddTag(Armor armorEditObj, IKeywordGetter tag)
@@ -176,6 +209,11 @@ namespace BaboKeywordPatcher
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
+			HashSet<string> MASTER_MODS = new HashSet<string>()
+            {
+                "SexLabAroused.esm",
+            };
+			
             var modsToPatch = Settings.ModsToPatch;
             var modsToNotPatch = Settings.ModsToNotPatch;
 
@@ -187,6 +225,17 @@ namespace BaboKeywordPatcher
             var shortenedLoadOrder = modsToPatch.Any() 
                 ? state.LoadOrder.PriorityOrder.Where(mod => modsToPatch.Contains(mod.ModKey) && !modsToNotPatch.Contains(mod.ModKey)).ToList()
                 : state.LoadOrder.PriorityOrder.Where(mod => !modsToNotPatch.Contains(mod.ModKey)).ToList();
+				//add
+            /* Console.WriteLine($"Found mods:\n{string.Join("\n", shortenedLoadOrder.Reverse())}");
+            var shortenedLoadOrderFuller = modsToPatch.Any() ? state.LoadOrder.ListedOrder.Where(mod =>
+                modsToPatch.Contains(mod.ModKey) || MASTER_MODS.Contains(mod.ModKey.ToString())
+                ) : state.LoadOrder.ListedOrder;
+				
+			var idLinkCache = shortenedLoadOrderFuller.ToImmutableLinkCache<ISkyrimMod, ISkyrimModGetter>(LinkCachePreferences.Default);
+
+            var consts = new UDImportantConstantsFound(Settings.IMPORTANTCONSTANTS, idLinkCache);
+
+            Console.WriteLine($"===========================Starting patching==========================="); */
 
             LoadKeywords(state);
 
@@ -212,12 +261,45 @@ namespace BaboKeywordPatcher
         public static IKeywordGetter? SLA_AnalBeads;
         public static IKeywordGetter? SLA_VaginalBeads;
         public static IKeywordGetter? SLA_ArmorRubber;
-        public static IKeywordGetter? SLA_BraArmor;
+        // Not in SexLabAroused Redux V28b SSE Modified by BakaFactory(2020 11 17)
+		//public static IKeywordGetter? SLA_BraArmor;
         public static IKeywordGetter? SLA_ThongT;
         public static IKeywordGetter? SLA_PantiesNormal;
         public static IKeywordGetter? SLA_HasLeggings;
         public static IKeywordGetter? SLA_HasStockings;
         public static IKeywordGetter? SLA_MiniSkirt;
         public static IKeywordGetter? SLA_ArmorHalfNakedBikini;
+		//Added Keywords. From SexLabAroused Redux V28b SSE Modified by BakaFactory(2020 11 17)
+		public static IKeywordGetter? SLA_PastiesNipple;
+		public static IKeywordGetter? SLA_PastiesCrotch;
+		public static IKeywordGetter? SLA_ShowgirlSkirt;
+		public static IKeywordGetter? SLA_PelvicCurtain;
+		public static IKeywordGetter? SLA_ArmorPartTop;
+		public static IKeywordGetter? SLA_ArmorLewdLeotard;
+		public static IKeywordGetter? SLA_ImpossibleClothes;
+		public static IKeywordGetter? SLA_ArmorCapeMini;
+		public static IKeywordGetter? SLA_ArmorCapeFull;
+		public static IKeywordGetter? SLA_ArmorHarness;
+		public static IKeywordGetter? SLA_Earrings;
+		public static IKeywordGetter? SLA_PiercingNose;
+		public static IKeywordGetter? SLA_PiercingLips;
+		public static IKeywordGetter? SLA_PiercingBelly;
+		public static IKeywordGetter? SLA_PiercingVulva;
+		public static IKeywordGetter? SLA_ThongGstring;
+		public static IKeywordGetter? SLA_MicroHotpants;
+		public static IKeywordGetter? SLA_PantsNormal;
+		public static IKeywordGetter? SLA_ArmorIllegal;
+		public static IKeywordGetter? SLA_KillerHeels;
+		public static IKeywordGetter? SLA_ThongCString;
+		public static IKeywordGetter? SLA_ThongLowleg;
+		public static IKeywordGetter? SLA_ArmorFemaleOnly;
+		public static IKeywordGetter? SLA_ArmorSpendex;
+		public static IKeywordGetter? SLA_Brabikini;
+		public static IKeywordGetter? SLA_ArmorHalfNaked;
+		public static IKeywordGetter? SLA_HasSleeves;
+		public static IKeywordGetter? SLA_MicroSkirt;
+		public static IKeywordGetter? SLA_FullSkirt;
+		public static IKeywordGetter? SLA_ArmorCurtain;
+		public static IKeywordGetter? SLA_ArmorPartBottom;
     }
 }
