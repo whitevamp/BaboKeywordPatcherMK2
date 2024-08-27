@@ -130,7 +130,6 @@ namespace BaboKeywordPatcher
             SLA_Brabikini = LoadKeyword(state, "SLA_Brabikini");
             SLA_ArmorHalfNaked = LoadKeyword(state, "SLA_ArmorHalfNaked");
             SLA_ArmorFemaleOnly = LoadKeyword(state, "SLA_ArmorFemaleOnly");
-            SLA_ArmorSpendex = LoadKeyword(state, "SLA_ArmorSpendex");
             SLA_PiercingBelly = LoadKeyword(state, "SLA_PiercingBelly");
             SLA_PiercingVulva = LoadKeyword(state, "SLA_PiercingVulva");
             SLA_ThongGstring = LoadKeyword(state, "SLA_ThongGstring");
@@ -140,7 +139,6 @@ namespace BaboKeywordPatcher
             SLA_KillerHeels = LoadKeyword(state, "SLA_KillerHeels");
             SLA_ThongCString = LoadKeyword(state, "SLA_ThongCString");
             SLA_ThongLowleg = LoadKeyword(state, "SLA_ThongLowleg");
-            SLA_ArmorHarness = LoadKeyword(state, "SLA_ArmorHarness");
             SLA_Earrings = LoadKeyword(state, "SLA_Earrings");
             SLA_PiercingNose = LoadKeyword(state, "SLA_PiercingNose");
             SLA_PiercingLips = LoadKeyword(state, "SLA_PiercingLips");
@@ -279,7 +277,6 @@ namespace BaboKeywordPatcher
 		public static IKeywordGetter? SLA_ImpossibleClothes;
 		public static IKeywordGetter? SLA_ArmorCapeMini;
 		public static IKeywordGetter? SLA_ArmorCapeFull;
-		public static IKeywordGetter? SLA_ArmorHarness;
 		public static IKeywordGetter? SLA_Earrings;
 		public static IKeywordGetter? SLA_PiercingNose;
 		public static IKeywordGetter? SLA_PiercingLips;
@@ -293,7 +290,6 @@ namespace BaboKeywordPatcher
 		public static IKeywordGetter? SLA_ThongCString;
 		public static IKeywordGetter? SLA_ThongLowleg;
 		public static IKeywordGetter? SLA_ArmorFemaleOnly;
-		public static IKeywordGetter? SLA_ArmorSpendex;
 		public static IKeywordGetter? SLA_Brabikini;
 		public static IKeywordGetter? SLA_ArmorHalfNaked;
 		public static IKeywordGetter? SLA_HasSleeves;
