@@ -26,6 +26,7 @@ namespace BaboKeywordPatcher
         public bool ArmorPrettyDefault { get; set; }
         public bool ArmorEroticDefault { get; set; }
         public bool EroticDresses { get; set; }
+        public bool EarringsDefault { get; set; }
         public HashSet<ModKey> ModsToPatch { get; set; } = new HashSet<ModKey>();
         public HashSet<ModKey> ModsToNotPatch { get; set; } = new HashSet<ModKey>();
     }
@@ -185,7 +186,12 @@ namespace BaboKeywordPatcher
                 matched = true;
                 AddTag(armorEditObj, EroticArmor);
             }
-
+            else if (settings.EarringsDefault && !matched && (StrMatch(name, "earring"))) //|| StrMatch(name, "cuiras") || StrMatch(name, "robes")))
+            {
+                matched = true;
+                AddTag(armorEditObj, SLA_Earrings);
+            }
+            
             if (matched)
             {
                 state.PatchMod.Armors.Set(armorEditObj);
