@@ -198,7 +198,7 @@ namespace BaboKeywordPatcher
             }
         } */
 			if (!matched)
-{
+			{
 			if (Settings.ArmorPrettyDefault && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
 			{
 				matched = true;
@@ -220,7 +220,7 @@ namespace BaboKeywordPatcher
 				state.PatchMod.Armors.Set(armorEditObj);
 			}
 		}
-
+	}
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
