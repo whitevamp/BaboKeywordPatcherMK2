@@ -175,7 +175,7 @@ namespace BaboKeywordPatcher
             }
 
             // Additional parsing rules here...
-
+/* 
             if (Settings.ArmorPrettyDefault && !matched && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
             {
                 matched = true;
@@ -196,7 +196,31 @@ namespace BaboKeywordPatcher
             {
                 state.PatchMod.Armors.Set(armorEditObj);
             }
-        }
+        } */
+			if (!matched)
+{
+			if (Settings.ArmorPrettyDefault && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
+			{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorPretty);
+			}
+			else if (Settings.ArmorEroticDefault && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
+			{
+				matched = true;
+				AddTag(armorEditObj, EroticArmor);
+			}
+			else if (Settings.EarringsDefault && StrMatch(name, "earring"))
+			{
+				matched = true;
+				AddTag(armorEditObj, SLA_Earrings);
+			}
+
+			if (matched)
+			{
+				state.PatchMod.Armors.Set(armorEditObj);
+			}
+		}
+
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
