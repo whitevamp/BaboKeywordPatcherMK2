@@ -48,7 +48,8 @@ namespace BaboKeywordPatcher
                     nickname: "Settings",
                     path: "settings.json",
                     out _settings,
-                    createIfMissing: true)
+                            true)
+                    //createIfMissing: true)
                 .SetTypicalOpen(GameRelease.SkyrimSE, "BaboKeywords.esp")
                 .Run(args);
         }
