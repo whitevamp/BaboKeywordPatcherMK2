@@ -196,7 +196,7 @@ namespace BaboKeywordPatcher
                     continue;
                 }
 
-                var keywordsToCheck = new HashSet<IFormLinkGetter<IKeywordGetter>>
+                /* var keywordsToCheck = new HashSet<IFormLinkGetter<IKeywordGetter>>
                 {
                     SLA_ArmorHarness,
                     SLA_ArmorSpendex,
@@ -247,7 +247,59 @@ namespace BaboKeywordPatcher
                     SLA_ArmorCapeFull,
                     SLA_PastiesNipple,
                     SLA_PastiesCrotch
-                };
+                }; */
+				var keywordsToCheck = new HashSet<IFormLinkGetter<IKeywordGetter>>
+				{
+					SLA_ArmorHarness.ToLink(),
+					SLA_ArmorSpendex.ToLink(),
+					SLA_ArmorTransparent.ToLink(),
+					SLA_BootsHeels.ToLink(),
+					SLA_VaginalDildo.ToLink(),
+					SLA_AnalPlug.ToLink(),
+					SLA_PiercingClit.ToLink(),
+					SLA_PiercingNipple.ToLink(),
+					SLA_ArmorPretty.ToLink(),
+					EroticArmor.ToLink(),
+					SLA_ArmorBondage.ToLink(),
+					SLA_AnalPlugTail.ToLink(),
+					SLA_AnalBeads.ToLink(),
+					SLA_VaginalBeads.ToLink(),
+					SLA_ArmorRubber.ToLink(),
+					SLA_ThongT.ToLink(),
+					SLA_PantiesNormal.ToLink(),
+					SLA_HasLeggings.ToLink(),
+					SLA_HasStockings.ToLink(),
+					SLA_MiniSkirt.ToLink(),
+					SLA_ArmorHalfNakedBikini.ToLink(),
+					SLA_FullSkirt.ToLink(),
+					SLA_ArmorCurtain.ToLink(),
+					SLA_ArmorPartBottom.ToLink(),
+					SLA_HasSleeves.ToLink(),
+					SLA_MicroSkirt.ToLink(),
+					SLA_Brabikini.ToLink(),
+					SLA_ArmorHalfNaked.ToLink(),
+					SLA_PiercingBelly.ToLink(),
+					SLA_PiercingVulva.ToLink(),
+					SLA_ThongGstring.ToLink(),
+					SLA_MicroHotpants.ToLink(),
+					SLA_PantsNormal.ToLink(),
+					SLA_ArmorIllegal.ToLink(),
+					SLA_KillerHeels.ToLink(),
+					SLA_ThongCString.ToLink(),
+					SLA_ThongLowleg.ToLink(),
+					SLA_Earrings.ToLink(),
+					SLA_PiercingNose.ToLink(),
+					SLA_PiercingLips.ToLink(),
+					SLA_ShowgirlSkirt.ToLink(),
+					SLA_PelvicCurtain.ToLink(),
+					SLA_ArmorPartTop.ToLink(),
+					SLA_ArmorLewdLeotard.ToLink(),
+					SLA_ImpossibleClothes.ToLink(),
+					SLA_ArmorCapeMini.ToLink(),
+					SLA_ArmorCapeFull.ToLink(),
+					SLA_PastiesNipple.ToLink(),
+					SLA_PastiesCrotch.ToLink()
+				};
 
                 foreach (var armor in mod.Mod.Armors)
                 {
