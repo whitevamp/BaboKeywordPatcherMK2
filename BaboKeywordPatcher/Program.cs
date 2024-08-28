@@ -23,6 +23,58 @@ namespace BaboKeywordPatcher
 {
    public class BaboSettings
     {
+		//add
+		        public bool EroticArmorDefault { get; set; }
+        public bool ArmorHarnessDefault { get; set; }
+        public bool ArmorSpendexDefault { get; set; }
+        public bool ArmorTransparentDefault { get; set; }
+        public bool BootsHeelsDefault { get; set; }
+        public bool VaginalDildoDefault { get; set; }
+        public bool AnalPlugDefault { get; set; }
+        public bool PiercingClitDefault { get; set; }
+        public bool PiercingNippleDefault { get; set; }
+        public bool ArmorPrettyDefault { get; set; }
+        public bool ArmorBondageDefault { get; set; }
+        public bool AnalPlugTailDefault { get; set; }
+        public bool AnalBeadsDefault { get; set; }
+        public bool VaginalBeadsDefault { get; set; }
+        public bool ArmorRubberDefault { get; set; }
+        public bool ThongTDefault { get; set; }
+        public bool PantiesNormalDefault { get; set; }
+        public bool HasLeggingsDefault { get; set; }
+        public bool HasStockingsDefault { get; set; }
+        public bool MiniSkirtDefault { get; set; }
+        public bool ArmorHalfNakedBikiniDefault { get; set; }
+        public bool PastiesNippleDefault { get; set; }
+        public bool PastiesCrotchDefault { get; set; }
+        public bool ShowgirlSkirtDefault { get; set; }
+        public bool PelvicCurtainDefault { get; set; }
+        public bool ArmorPartTopDefault { get; set; }
+        public bool ArmorLewdLeotardDefault { get; set; }
+        public bool ImpossibleClothesDefault { get; set; }
+        public bool ArmorCapeMiniDefault { get; set; }
+        public bool ArmorCapeFullDefault { get; set; }
+        public bool EarringsDefault { get; set; }
+        public bool PiercingNoseDefault { get; set; }
+        public bool PiercingLipsDefault { get; set; }
+        public bool PiercingBellyDefault { get; set; }
+        public bool PiercingVulvaDefault { get; set; }
+        public bool ThongGstringDefault { get; set; }
+        public bool MicroHotpantsDefault { get; set; }
+        public bool PantsNormalDefault { get; set; }
+        public bool ArmorIllegalDefault { get; set; }
+        public bool KillerHeelsDefault { get; set; }
+        public bool ThongCStringDefault { get; set; }
+        public bool ThongLowlegDefault { get; set; }
+        public bool ArmorFemaleOnlyDefault { get; set; }
+        public bool BrabikiniDefault { get; set; }
+        public bool ArmorHalfNakedDefault { get; set; }
+        public bool HasSleevesDefault { get; set; }
+        public bool MicroSkirtDefault { get; set; }
+        public bool FullSkirtDefault { get; set; }
+        public bool ArmorCurtainDefault { get; set; }
+        public bool ArmorPartBottomDefault { get; set; }
+		//end add
         public bool ArmorPrettyDefault { get; set; }
         public bool ArmorEroticDefault { get; set; }
         public bool EroticDresses { get; set; }
@@ -165,7 +217,7 @@ namespace BaboKeywordPatcher
                 return;
             }
 
-            if (StrMatch(name, "harness") || StrMatch(name, "corset") || StrMatch(name, "StraitJacket") ||
+            /* if (StrMatch(name, "harness") || StrMatch(name, "corset") || StrMatch(name, "StraitJacket") ||
                 StrMatch(name, "hobble") || StrMatch(name, "tentacles") ||
                 StrMatch(name, "slave") || StrMatch(name, "chastity") || StrMatch(name, "cuff") || StrMatch(name, "binder") ||
                 StrMatch(name, "yoke") || StrMatch(name, "mitten"))
@@ -175,44 +227,91 @@ namespace BaboKeywordPatcher
             }
 
             // Additional parsing rules here...
-/* 
-            if (Settings.ArmorPrettyDefault && !matched && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
-            {
-                matched = true;
-                AddTag(armorEditObj, SLA_ArmorPretty);
-            }
-            else if (Settings.ArmorEroticDefault && !matched && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
-            {
-                matched = true;
-                AddTag(armorEditObj, EroticArmor);
-            }
-            else if (settings.EarringsDefault && !matched && (StrMatch(name, "earring"))) //|| StrMatch(name, "cuiras") || StrMatch(name, "robes")))
-            {
-                matched = true;
-                AddTag(armorEditObj, SLA_Earrings);
-            }
-            
-            if (matched)
-            {
-                state.PatchMod.Armors.Set(armorEditObj);
-            }
-        } */
+			var tagConfigs = new List<(string ConfigName, string[] DataNames, string Tag)>
+			{
+				("ArmorPrettyDefault", new[] { "armor", "cuiras", "robes" }, "SLA_ArmorPretty"),
+				("ArmorEroticDefault", new[] { "armor", "cuiras", "robes" }, "EroticArmor"),
+				("EarringsDefault", new[] { "earring" }, "SLA_Earrings"),
+				// Add your remaining 57 entries here...
+			};
+			
 			if (!matched)
 			{
-			if (Settings.ArmorPrettyDefault && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
+				foreach (var config in tagConfigs)
+				{
+					if ((bool)Settings.GetType().GetProperty(config.ConfigName).GetValue(Settings) && !matched && config.DataNames.Any(dataName => StrMatch(name, dataName)))
+					{
+						matched = true;
+						AddTag(armorEditObj, config.Tag);
+					}
+				}
+
+				if (matched)
+				{
+					state.PatchMod.Armors.Set(armorEditObj);
+				} */
+				var tagConfigs = new List<(string ConfigName, string[] DataNames, string Tag)>
+			    {
+			    ("ArmorEroticDefault", new[] { "armor", "cuiras", "robes" }, "EroticArmor"),
+				("ArmorHarnessDefault", new[] { "earring" }, "SLA_ArmorHarness"),
+				("ArmorSpendexDefault", new[] { "earring" }, "SLA_ArmorSpendex"),
+				("ArmorTransparentDefault", new[] { "harness", "corset", "StraitJacket", "hobble", "tentacles", "slave", "chastity", "cuff", "binder", "yoke", "mitten", "glove" }, "SLA_ArmorTransparent"),
+				("BootsHeelsDefault", new[] { "boots" }, "SLA_BootsHeels"),
+				("VaginalDildoDefault", new[] { "earring" }, "SLA_VaginalDildo"),
+				("AnalPlugDefault", new[] { "earring" }, "SLA_AnalPlug"),
+				("PiercingClitDefault", new[] { "earring" }, "SLA_PiercingClit"),
+				("PiercingNippleDefault", new[] { "earring" }, "SLA_PiercingNipple"),
+				("ArmorPrettyDefault", new[] { "armor", "cuiras", "robes" }, "SLA_ArmorPretty"),
+				("ArmorBondageDefault", new[] { "earring" }, "SLA_ArmorBondage"),
+				("AnalPlugTailDefault", new[] { "earring" }, "SLA_AnalPlugTail"),
+				("AnalBeadsDefault", new[] { "earring" }, "SLA_AnalBeads"),
+				("VaginalBeadsDefault", new[] { "earring" }, "SLA_VaginalBeads"),
+				("ArmorRubberDefault", new[] { "earring" }, "SLA_ArmorRubber"),
+				("ThongTDefault", new[] { "earring" }, "SLA_ThongT"),
+				("PantiesNormalDefault", new[] { "panties" }, "SLA_PantiesNormal"),
+				("HasLeggingsDefault", new[] { "earring" }, "SLA_HasLeggings"),
+				("HasStockingsDefault", new[] { "stocking", "stockings", "stock", "lingerie stocking", "lingeriestocking", "lingerie_stock" }, "SLA_HasStockings"),
+				("MiniSkirtDefault", new[] { "skirt" }, "SLA_MiniSkirt"),
+				("ArmorHalfNakedBikiniDefault", new[] { "earring" }, "SLA_ArmorHalfNakedBikini"),
+				("PastiesNippleDefault", new[] { "earring" }, "SLA_PastiesNipple"),
+				("PastiesCrotchDefault", new[] { "earring" }, "SLA_PastiesCrotch"),
+				("ShowgirlSkirtDefault", new[] { "earring" }, "SLA_ShowgirlSkirt"),
+				("PelvicCurtainDefault", new[] { "earring" }, "SLA_PelvicCurtain"),
+				("ArmorPartTopDefault", new[] { "earring" }, "SLA_ArmorPartTop"),
+				("ArmorLewdLeotardDefault", new[] { "earring" }, "SLA_ArmorLewdLeotard"),
+				("ImpossibleClothesDefault", new[] { "lace", "lacebody", "lingerie" }, "SLA_ImpossibleClothes"),
+				("ArmorCapeMiniDefault", new[] { "earring" }, "SLA_ArmorCapeMini"),
+				("ArmorCapeFullDefault", new[] { "earring" }, "SLA_ArmorCapeFull"),
+				("EarringsDefault", new[] { "earring" }, "SLA_Earrings"),
+				("PiercingNoseDefault", new[] { "earring" }, "SLA_PiercingNose"),
+				("PiercingLipsDefault", new[] { "earring" }, "SLA_PiercingLips"),
+				("PiercingBellyDefault", new[] { "earring" }, "SLA_PiercingBelly"),
+				("PiercingVulvaDefault", new[] { "earring" }, "SLA_PiercingVulva"),
+				("ThongGstringDefault", new[] { "earring" }, "SLA_ThongGstring"),
+				("MicroHotpantsDefault", new[] { "earring" }, "SLA_MicroHotpants"),
+				("PantsNormalDefault", new[] { "earring" }, "SLA_PantsNormal"),
+				("ArmorIllegalDefault", new[] { "lace", "lacebody", "lingerie" }, "SLA_ArmorIllegal"),
+				("KillerHeelsDefault", new[] { "shoes", "boots" }, "SLA_KillerHeels"),
+				("ThongCStringDefault", new[] { "earring" }, "SLA_ThongCString"),
+				("ThongLowlegDefault", new[] { "earring" }, "SLA_ThongLowleg"),
+				("ArmorFemaleOnlyDefault", new[] { "lace", "lacebody" }, "SLA_ArmorFemaleOnly"),
+				("BrabikiniDefault", new[] { "bra" }, "SLA_Brabikini"),
+				("ArmorHalfNakedDefault", new[] { "lace", "lacebody", "lingerie" }, "SLA_ArmorHalfNaked"),
+				("HasSleevesDefault", new[] { "earring" }, "SLA_HasSleeves"),
+				("MicroSkirtDefault", new[] { "skirt" }, "SLA_MicroSkirt"),
+				("FullSkirtDefault", new[] { "skirt" }, "SLA_FullSkirt"),
+				("ArmorCurtainDefault", new[] { "earring" }, "SLA_ArmorCurtain"),
+				("ArmorPartBottomDefault", new[] { "earring" }, "SLA_ArmorPartBottom"),
+				};
+		if (!matched)
+		{
+			foreach (var config in tagConfigs)
 			{
-				matched = true;
-				AddTag(armorEditObj, SLA_ArmorPretty);
-			}
-			else if (Settings.ArmorEroticDefault && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
-			{
-				matched = true;
-				AddTag(armorEditObj, EroticArmor);
-			}
-			else if (Settings.EarringsDefault && StrMatch(name, "earring"))
-			{
-				matched = true;
-				AddTag(armorEditObj, SLA_Earrings);
+				if ((bool)Settings.GetType().GetProperty(config.ConfigName).GetValue(Settings) && !matched && config.DataNames.Any(dataName => StrMatch(name, dataName)))
+				{
+					matched = true;
+					AddTag(armorEditObj, config.Tag);
+				}
 			}
 
 			if (matched)
@@ -220,7 +319,9 @@ namespace BaboKeywordPatcher
 				state.PatchMod.Armors.Set(armorEditObj);
 			}
 		}
-	}
+		
+			//} //!matched
+	    } // ParseName
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
