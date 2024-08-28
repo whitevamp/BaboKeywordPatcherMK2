@@ -54,7 +54,7 @@ namespace BaboKeywordPatcher
         public bool ImpossibleClothesDefault { get; set; }
         public bool ArmorCapeMiniDefault { get; set; }
         public bool ArmorCapeFullDefault { get; set; }
-        public bool EarringsDefault { get; set; }
+        //public bool EarringsDefault { get; set; }
         public bool PiercingNoseDefault { get; set; }
         public bool PiercingLipsDefault { get; set; }
         public bool PiercingBellyDefault { get; set; }
