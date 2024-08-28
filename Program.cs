@@ -307,10 +307,17 @@ namespace BaboKeywordPatcher
 		{
 			foreach (var config in tagConfigs)
 			{
-				if ((bool)Settings.GetType().GetProperty(config.ConfigName).GetValue(Settings) && !matched && config.DataNames.Any(dataName => StrMatch(name, dataName)))
+				var configValue = Settings.GetType().GetProperty(config.ConfigName)?.GetValue(Settings) as bool?;
+			if (configValue == true)
+				
+				//GetProperty(config.ConfigName).GetValue(Settings).
+				
+				//if ((bool)Settings.GetType().GetProperty(config.ConfigName).GetValue(Settings) && !matched && config.DataNames.Any(dataName => StrMatch(name, dataName)))
 				{
 					matched = true;
-					AddTag(armorEditObj, config.Tag);
+					var keywordGetter = LoadKeyword(state, config.Tag);
+					AddTag(armorEditObj, keywordGetter);
+					//AddTag(armorEditObj, config.Tag);
 				}
 			}
 
@@ -346,6 +353,7 @@ namespace BaboKeywordPatcher
 
             foreach (var armor in shortenedLoadOrder.SelectMany(mod => mod.Mod?.Armors?.Where(a => a.Name != null)))
             {
+				//if (name == null) throw new ArgumentNullException(nameof(name));
                 ParseName(state, armor, armor.Name!.ToString());
             }
         }
@@ -406,3 +414,7 @@ namespace BaboKeywordPatcher
         public static IKeywordGetter? SLA_ArmorPartBottom;
     }
 }
+var configValue = Settings.GetType().GetProperty(config.ConfigName)?.GetValue(Settings) as bool?;
+if (configValue == true)
+	
+	GetProperty(config.ConfigName).GetValue(Settings).
