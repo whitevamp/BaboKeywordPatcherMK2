@@ -24,7 +24,7 @@ namespace BaboKeywordPatcher
    public class BaboSettings
     {
 		//add
-		        public bool EroticArmorDefault { get; set; }
+		//public bool EroticArmorDefault { get; set; }
         public bool ArmorHarnessDefault { get; set; }
         public bool ArmorSpendexDefault { get; set; }
         public bool ArmorTransparentDefault { get; set; }
@@ -33,7 +33,7 @@ namespace BaboKeywordPatcher
         public bool AnalPlugDefault { get; set; }
         public bool PiercingClitDefault { get; set; }
         public bool PiercingNippleDefault { get; set; }
-        public bool ArmorPrettyDefault { get; set; }
+        //public bool ArmorPrettyDefault { get; set; }
         public bool ArmorBondageDefault { get; set; }
         public bool AnalPlugTailDefault { get; set; }
         public bool AnalBeadsDefault { get; set; }
