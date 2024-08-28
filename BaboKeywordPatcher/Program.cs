@@ -36,7 +36,7 @@ namespace BaboKeywordPatcher
         //public bool ArmorPrettyDefault { get; set; }
         public bool ArmorBondageDefault { get; set; }
         public bool AnalPlugTailDefault { get; set; }
-        public bool AnalBeadsDefault { get; set; }
+        //public bool AnalBeadsDefault { get; set; }
         public bool VaginalBeadsDefault { get; set; }
         public bool ArmorRubberDefault { get; set; }
         public bool ThongTDefault { get; set; }
@@ -150,7 +150,7 @@ namespace BaboKeywordPatcher
             EroticArmor = LoadKeyword(state, "EroticArmor");
             SLA_ArmorBondage = LoadKeyword(state, "SLA_ArmorBondage");
             SLA_AnalPlugTail = LoadKeyword(state, "SLA_AnalPlugTail");
-            SLA_AnalBeads = LoadKeyword(state, "SLA_AnalPlugBeads");
+            //SLA_AnalBeads = LoadKeyword(state, "SLA_AnalPlugBeads");
             SLA_VaginalBeads = LoadKeyword(state, "SLA_VaginalBeads");
             SLA_ArmorRubber = LoadKeyword(state, "SLA_ArmorRubber");
             // Not in SexLabAroused Redux V28b SSE Modified by BakaFactory(2020 11 17)
@@ -264,7 +264,7 @@ namespace BaboKeywordPatcher
 				("ArmorPrettyDefault", new[] { "armor", "cuiras", "robes" }, "SLA_ArmorPretty"),
 				("ArmorBondageDefault", new[] { "earring" }, "SLA_ArmorBondage"),
 				("AnalPlugTailDefault", new[] { "earring" }, "SLA_AnalPlugTail"),
-				("AnalBeadsDefault", new[] { "earring" }, "SLA_AnalBeads"),
+				//("AnalBeadsDefault", new[] { "earring" }, "SLA_AnalBeads"),
 				("VaginalBeadsDefault", new[] { "earring" }, "SLA_VaginalBeads"),
 				("ArmorRubberDefault", new[] { "earring" }, "SLA_ArmorRubber"),
 				("ThongTDefault", new[] { "earring" }, "SLA_ThongT"),
@@ -371,7 +371,7 @@ namespace BaboKeywordPatcher
         public static IKeywordGetter? SLA_ArmorPretty;
         public static IKeywordGetter? SLA_ArmorBondage;
         public static IKeywordGetter? SLA_AnalPlugTail;
-        public static IKeywordGetter? SLA_AnalBeads;
+        //public static IKeywordGetter? SLA_AnalBeads;
         public static IKeywordGetter? SLA_VaginalBeads;
         public static IKeywordGetter? SLA_ArmorRubber;
         // Not in SexLabAroused Redux V28b SSE Modified by BakaFactory(2020 11 17)
