@@ -414,7 +414,3 @@ namespace BaboKeywordPatcher
         public static IKeywordGetter? SLA_ArmorPartBottom;
     }
 }
-var configValue = Settings.GetType().GetProperty(config.ConfigName)?.GetValue(Settings) as bool?;
-if (configValue == true)
-	
-	GetProperty(config.ConfigName).GetValue(Settings).
