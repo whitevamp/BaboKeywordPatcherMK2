@@ -1,8 +1,13 @@
 {
   "Nickname": "BaboKeywordPatcherMK2",
   "Visibility": "Visible",
-  "OneLineDescription": "",
-  "LongDescription": "",
+  "OneLineDescription": "BaboKeywordPatcherInspiredByMin",
+  "LongDescription": "Added in the ability to select mods, to include aswell as to exclude via a GUI.",
   "PreferredAutoVersioning": "Default",
-  "RequiredMods": []
+  "RequiredMods": [],
+  "TargetedReleases": [
+    "SkyrimSE",
+    "EnderalSE",
+    "SkyrimSEGog"
+  ]
 }
