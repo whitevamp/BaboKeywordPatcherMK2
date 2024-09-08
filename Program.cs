@@ -49,13 +49,15 @@ namespace BaboKeywordPatcher
                 .Run(args);
         }
 
-        public static IKeywordGetter LoadKeyword(IPatcherState<ISkyrimMod, ISkyrimModGetter> state, string kwd)
+        public static IKeywordGetter? LoadKeyword(IPatcherState<ISkyrimMod, ISkyrimModGetter> state, string kwd)
         {
-            if (!state.LinkCache.TryResolve<IKeywordGetter>(kwd, out var returnKwd))
+            if (state.LinkCache.TryResolve<IKeywordGetter>(kwd, out var returnKwd))
             {
-                throw new Exception($"Failed to load keyword: {kwd}");
+                return returnKwd;
             }
-            return returnKwd;
+
+            Console.WriteLine($"Warning: Failed to load keyword: {kwd}");
+            return null;
         }
 
         public static bool StrMatch(string name, string comparator)
@@ -141,8 +143,10 @@ namespace BaboKeywordPatcher
             SLA_PastiesCrotch = LoadKeyword(state, "SLA_PastiesCrotch");
         }
 
-        private static void AddTag(Armor armorEditObj, IKeywordGetter tag)
+        private static void AddTag(Armor armorEditObj, IKeywordGetter? tag)
         {
+            if (tag == null) return; // Ensure 'tag' is not null
+
             if (armorEditObj.Keywords == null)
             {
                 armorEditObj.Keywords = new ExtendedList<IFormLinkGetter<IKeywordGetter>>();
@@ -156,6 +160,12 @@ namespace BaboKeywordPatcher
 
         public static void ParseName(IPatcherState<ISkyrimMod, ISkyrimModGetter> state, IArmorGetter armor, string name)
         {
+            if (name == null)
+            {
+                Console.WriteLine($"Armor name is null for armor {armor.EditorID}");
+                return;
+            }
+
             bool matched = false;
             var armorEditObj = state.PatchMod.Armors.GetOrAddAsOverride(armor);
 
@@ -174,8 +184,8 @@ namespace BaboKeywordPatcher
                 AddTag(armorEditObj, SLA_ArmorTransparent);
             }
 
-            // Additional parsing rules here...
-/* 
+            /*// Additional parsing rules here...
+ 
             if (Settings.ArmorPrettyDefault && !matched && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
             {
                 matched = true;
@@ -243,10 +253,21 @@ namespace BaboKeywordPatcher
 
             LoadKeywords(state);
 
-            foreach (var armor in shortenedLoadOrder.SelectMany(mod => mod.Mod?.Armors?.Where(a => a.Name != null)))
+            /*foreach (var armor in shortenedLoadOrder.SelectMany(mod => mod.Mod?.Armors?.Where(a => a.Name != null)))
             {
-                ParseName(state, armor, armor.Name!.ToString());
+                ParseName(state, armor, armor.Name?.ToString());
+            }*/
+            foreach (var armor in shortenedLoadOrder
+                     .Where(mod => mod != null && mod.Mod != null && mod.Mod.Armors != null) // Ensure mod, Mod, and Armors are not null
+                     .SelectMany(mod => mod!.Mod!.Armors!.Where(a => a?.Name != null))) // Use null-forgiving operator
+            {
+                var armorName = armor.Name?.ToString();
+                if (armorName != null) // Ensure name is not null
+                {
+                    ParseName(state, armor, armorName);
+                }
             }
+
         }
 
         // Keyword variables (placeholders)
