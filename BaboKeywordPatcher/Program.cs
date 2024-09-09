@@ -1,3 +1,4 @@
+#nullable enable  // Enables nullable reference types for this fileusing System;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,6 +24,58 @@ namespace BaboKeywordPatcher
 {
    public class BaboSettings
     {
+        //add
+        //public bool EroticArmorDefault { get; set; }
+        //public bool ArmorHarnessDefault { get; set; }
+        //public bool ArmorSpendexDefault { get; set; }
+        public bool ArmorTransparentDefault { get; set; }
+        public bool BootsHeelsDefault { get; set; }
+        //public bool VaginalDildoDefault { get; set; }
+        public bool AnalPlugDefault { get; set; }
+        public bool PiercingClitDefault { get; set; }
+        public bool PiercingNippleDefault { get; set; }
+        /*  //public bool ArmorPrettyDefault { get; set; }
+         public bool ArmorBondageDefault { get; set; }
+         public bool AnalPlugTailDefault { get; set; }
+         //public bool AnalBeadsDefault { get; set; }
+         public bool VaginalBeadsDefault { get; set; }
+         public bool ArmorRubberDefault { get; set; }
+         public bool ThongTDefault { get; set; } */
+        public bool PantiesNormalDefault { get; set; }
+        //public bool HasLeggingsDefault { get; set; }
+        public bool HasStockingsDefault { get; set; }
+        public bool MiniSkirtDefault { get; set; }
+        public bool ArmorHalfNakedBikiniDefault { get; set; }
+        /* public bool PastiesNippleDefault { get; set; }
+        public bool PastiesCrotchDefault { get; set; }
+        public bool ShowgirlSkirtDefault { get; set; }
+        public bool PelvicCurtainDefault { get; set; }*/
+        public bool ArmorPartTopDefault { get; set; }
+        public bool ArmorLewdLeotardDefault { get; set; } 
+        public bool ImpossibleClothesDefault { get; set; }
+        /* public bool ArmorCapeMiniDefault { get; set; }*/
+        public bool ArmorCapeFullDefault { get; set; } 
+        //public bool EarringsDefault { get; set; }
+        /*  public bool PiercingNoseDefault { get; set; }
+         public bool PiercingLipsDefault { get; set; }
+         public bool PiercingBellyDefault { get; set; }
+         public bool PiercingVulvaDefault { get; set; }
+         public bool ThongGstringDefault { get; set; }
+         public bool MicroHotpantsDefault { get; set; }*/
+         public bool PantsNormalDefault { get; set; } 
+        public bool ArmorIllegalDefault { get; set; }
+        public bool KillerHeelsDefault { get; set; }
+        /* public bool ThongCStringDefault { get; set; }
+        public bool ThongLowlegDefault { get; set; } */
+        public bool ArmorFemaleOnlyDefault { get; set; }
+        public bool BrabikiniDefault { get; set; }
+        public bool ArmorHalfNakedDefault { get; set; }
+        public bool HasSleevesDefault { get; set; } 
+        public bool MicroSkirtDefault { get; set; }
+        public bool FullSkirtDefault { get; set; }
+        public bool ArmorCurtainDefault { get; set; }
+        public bool ArmorPartBottomDefault { get; set; }
+        //end add
         public bool ArmorPrettyDefault { get; set; }
         public bool ArmorEroticDefault { get; set; }
         public bool EroticDresses { get; set; }
@@ -178,7 +231,7 @@ namespace BaboKeywordPatcher
             if (StrMatch(name, "harness") || StrMatch(name, "corset") || StrMatch(name, "StraitJacket") ||
                 StrMatch(name, "hobble") || StrMatch(name, "tentacles") ||
                 StrMatch(name, "slave") || StrMatch(name, "chastity") || StrMatch(name, "cuff") || StrMatch(name, "binder") ||
-                StrMatch(name, "yoke") || StrMatch(name, "mitten"))
+                StrMatch(name, "yoke") || StrMatch(name, "mitten") || StrMatch(name, "gauntlets "))
             {
                 matched = true;
                 AddTag(armorEditObj, SLA_ArmorTransparent);
@@ -224,8 +277,322 @@ namespace BaboKeywordPatcher
 				matched = true;
 				AddTag(armorEditObj, SLA_Earrings);
 			}
-
-			if (matched)
+                /*
+				Remove comment block to add that keyword, but it needs to be maped to an armor pice/'s
+				example: replace earring with the name of an armor pice that would align with the BaboKeyWord SLA_ArmorHarness
+				("ArmorHarnessDefault
+				else if (Settings.ArmorHarnessDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorHarness);
+				}
+				End Example.
+				*/
+                // Added extra Keywords
+                /* ("ArmorHarnessDefault
+				else if (Settings.ArmorHarnessDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorHarness);
+				}//"SLA_ArmorHarness")
+				//("ArmorSpendexDefault
+				else if (Settings.ArmorSpendexDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorSpendex);
+				}//"SLA_ArmorSpendex"),
+				*/
+                //("ArmorTransparentDefault
+                else if (Settings.ArmorTransparentDefault && (StrMatch(name, "harness") || StrMatch(name, "corset") || StrMatch(name, "StraitJacket") || StrMatch(name, "hobble") || StrMatch(name, "tentacles") || StrMatch(name, "slave") || StrMatch(name, "chastity") || StrMatch(name, "cuff") || StrMatch(name, "binder") || StrMatch(name, "yoke") || StrMatch(name, "mitten") || StrMatch(name, "glove") || StrMatch(name, "gauntlets ")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_ArmorTransparent);
+                }//"SLA_ArmorTransparent")
+                 //("BootsHeelsDefault
+                else if (Settings.BootsHeelsDefault && (StrMatch(name, "boots")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_BootsHeels);
+                }//"SLA_BootsHeels"),
+                /* ("VaginalDildoDefault
+				else if (Settings.VaginalDildoDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_VaginalDildo);
+				}//"SLA_VaginalDildo")
+				//("AnalPlugDefault
+				else if (Settings.AnalPlugDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_AnalPlug);
+				}//"SLA_AnalPlug")
+				//("PiercingClitDefault
+				else if (Settings.PiercingClitDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PiercingClit);
+				}//"SLA_PiercingClit")
+				//("PiercingNippleDefault
+				else if (Settings.PiercingNippleDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PiercingNipple);
+				}//"SLA_PiercingNipple")
+				//("ArmorPrettyDefault
+				else if (Settings.ArmorPrettyDefault && (StrMatch(name, "armor") || StrMatch(name, "cuiras") || StrMatch(name, "robes")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorPretty);
+				}//"SLA_ArmorPretty")
+				//("ArmorBondageDefault
+				else if (Settings.ArmorBondageDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorBondage);
+				}//"SLA_ArmorBondage")
+				//("AnalPlugTailDefault
+				else if (Settings.AnalPlugTailDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_AnalPlugTail);
+				}//"SLA_AnalPlugTail"),//("AnalBeadsDefault
+				else if (Settings.AnalBeadsDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_AnalBeads);
+				}//"SLA_AnalBeads")
+				//("VaginalBeadsDefault
+				else if (Settings.VaginalBeadsDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_VaginalBeads);
+				}//"SLA_VaginalBeads")
+				//("ArmorRubberDefault
+				else if (Settings.ArmorRubberDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorRubber);
+				}//"SLA_ArmorRubber")
+				//("ThongTDefault
+				else if (Settings.ThongTDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ThongT);
+				}//"SLA_ThongT"),
+				*/
+                //("PantiesNormalDefault
+                else if (Settings.PantiesNormalDefault && (StrMatch(name, "panties") || StrMatch(name, "panti") || StrMatch(name, "panty") || StrMatch(name, "briefs") || StrMatch(name, "underwear")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_PantiesNormal);
+                }//"SLA_PantiesNormal"),
+                /* ("HasLeggingsDefault
+				else if (Settings.HasLeggingsDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_HasLeggings);
+				}//"SLA_HasLeggings"),
+				*/
+                //("HasStockingsDefault
+                else if (Settings.HasStockingsDefault && (StrMatch(name, "stocking") || StrMatch(name, "stockings") || StrMatch(name, "stock") || StrMatch(name, "lingerie stocking") || StrMatch(name, "lingeriestocking") || StrMatch(name, "lingerie_stock")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_HasStockings);
+                }//"SLA_HasStockings")
+                 //("MiniSkirtDefault
+                else if (Settings.MiniSkirtDefault && (StrMatch(name, "skirt")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_MiniSkirt);
+                }//"SLA_MiniSkirt")
+                 /*//("ArmorHalfNakedBikiniDefault
+                else if (Settings.ArmorHalfNakedBikiniDefault && (StrMatch(name, "earring")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_ArmorHalfNakedBikini);
+                }//"SLA_ArmorHalfNakedBikini"),
+                 //("PastiesNippleDefault
+				else if (Settings.PastiesNippleDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PastiesNipple);
+				}//"SLA_PastiesNipple")
+				//("PastiesCrotchDefault
+				else if (Settings.PastiesCrotchDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PastiesCrotch);
+				}//"SLA_PastiesCrotch")
+				//("ShowgirlSkirtDefault
+				else if (Settings.ShowgirlSkirtDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ShowgirlSkirt);
+				}//"SLA_ShowgirlSkirt")
+				//("PelvicCurtainDefault
+				else if (Settings.PelvicCurtainDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PelvicCurtain);
+				}//"SLA_PelvicCurtain")
+				//("ArmorPartTopDefault*/
+				else if (Settings.ArmorPartTopDefault && (StrMatch(name, "top") || StrMatch(name, "shirt")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorPartTop);
+				}//"SLA_ArmorPartTop")
+				//("ArmorLewdLeotardDefault
+				else if (Settings.ArmorLewdLeotardDefault && (StrMatch(name, "bodysuit")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorLewdLeotard);
+				}//"SLA_ArmorLewdLeotard"),
+				
+                //("ImpossibleClothesDefault
+                else if (Settings.ImpossibleClothesDefault && (StrMatch(name, "lace") || StrMatch(name, "lacebody") || StrMatch(name, "lingerie")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_ImpossibleClothes);
+                }//"SLA_ImpossibleClothes"),
+                /* ("ArmorCapeMiniDefault
+				else if (Settings.ArmorCapeMiniDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorCapeMini);
+				}//"SLA_ArmorCapeMini")*/
+				//("ArmorCapeFullDefault
+				else if (Settings.ArmorCapeFullDefault && (StrMatch(name, "cape")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorCapeFull);
+				}//"SLA_ArmorCapeFull"),
+				
+                //("EarringsDefault
+                else if (Settings.EarringsDefault && (StrMatch(name, "earring")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_Earrings);
+                }//"SLA_Earrings"),
+                /* ("PiercingNoseDefault
+				else if (Settings.PiercingNoseDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PiercingNose);
+				}//"SLA_PiercingNose")
+				//("PiercingLipsDefault
+				else if (Settings.PiercingLipsDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PiercingLips);
+				}//"SLA_PiercingLips")
+				//("PiercingBellyDefault
+				else if (Settings.PiercingBellyDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PiercingBelly);
+				}//"SLA_PiercingBelly")
+				//("PiercingVulvaDefault
+				else if (Settings.PiercingVulvaDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PiercingVulva);
+				}//"SLA_PiercingVulva")
+				//("ThongGstringDefault
+				else if (Settings.ThongGstringDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ThongGstring);
+				}//"SLA_ThongGstring")
+				//("MicroHotpantsDefault
+				else if (Settings.MicroHotpantsDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_MicroHotpants);
+				}//"SLA_MicroHotpants")*/
+				//("PantsNormalDefault
+				else if (Settings.PantsNormalDefault && (StrMatch(name, "pants")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_PantsNormal);
+				}//"SLA_PantsNormal"),
+				
+                //("ArmorIllegalDefault
+                else if (Settings.ArmorIllegalDefault && (StrMatch(name, "lace") || StrMatch(name, "lacebody") || StrMatch(name, "lingerie")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_ArmorIllegal);
+                }//"SLA_ArmorIllegal")
+                 //("KillerHeelsDefault
+                else if (Settings.KillerHeelsDefault && (StrMatch(name, "shoes") || StrMatch(name, "boots") || StrMatch(name, "heel") || StrMatch(name, "heels")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_KillerHeels);
+                }//"SLA_KillerHeels"),
+                /* ("ThongCStringDefault
+				else if (Settings.ThongCStringDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ThongCString);
+				}//"SLA_ThongCString")
+				//("ThongLowlegDefault
+				else if (Settings.ThongLowlegDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ThongLowleg);
+				}//"SLA_ThongLowleg"),
+				*/
+                //("ArmorFemaleOnlyDefault
+                else if (Settings.ArmorFemaleOnlyDefault && (StrMatch(name, "lace") || StrMatch(name, "lacebody") || StrMatch(name, "lingerie") || StrMatch(name, "stocking") || StrMatch(name, "stockings") || StrMatch(name, "stock") || StrMatch(name, "lingerie stocking") || StrMatch(name, "lingeriestocking") || StrMatch(name, "panties") || StrMatch(name, "panti") || StrMatch(name, "panty") || StrMatch(name, "corset") || StrMatch(name, "underwear")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_ArmorFemaleOnly);
+                }//"SLA_ArmorFemaleOnly")
+                 //("BrabikiniDefault
+                else if (Settings.BrabikiniDefault && (StrMatch(name, "bra")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_Brabikini);
+                }//"SLA_Brabikini")
+                 //("ArmorHalfNakedDefault
+                else if (Settings.ArmorHalfNakedDefault && (StrMatch(name, "lace") || StrMatch(name, "lacebody") || StrMatch(name, "lingerie") || StrMatch(name, "shorts")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_ArmorHalfNaked);
+                }//"SLA_ArmorHalfNaked"),
+                /* ("HasSleevesDefault*/
+				else if (Settings.HasSleevesDefault && (StrMatch(name, "sleeves")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_HasSleeves);
+				}//"SLA_HasSleeves"),
+				
+                //("MicroSkirtDefault
+                else if (Settings.MicroSkirtDefault && (StrMatch(name, "skirt")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_MicroSkirt);
+                }//"SLA_MicroSkirt")
+                 //("FullSkirtDefault
+                else if (Settings.FullSkirtDefault && (StrMatch(name, "skirt") || StrMatch(name, "gown") || StrMatch(name, "dress")))
+                {
+                    matched = true;
+                    AddTag(armorEditObj, SLA_FullSkirt);
+                }//"SLA_FullSkirt")
+                /*
+				//("ArmorCurtainDefault
+				else if (Settings.ArmorCurtainDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorCurtain);
+				}//"SLA_ArmorCurtain")
+				//("ArmorPartBottomDefault
+				else if (Settings.ArmorPartBottomDefault && (StrMatch(name, "earring")))
+				{
+				matched = true;
+				AddTag(armorEditObj, SLA_ArmorPartBottom);
+				}//"SLA_ArmorPartBottom"),
+				*/
+                if (matched)
 			{
 				state.PatchMod.Armors.Set(armorEditObj);
 			}
